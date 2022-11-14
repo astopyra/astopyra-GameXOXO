@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class NextMove {
 
-    private int rowNumber, columnNumber;
+    protected int rowNumber, columnNumber;
     Scanner scanner = new Scanner(System.in);
 
 

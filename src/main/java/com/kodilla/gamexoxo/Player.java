@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Player {
 
     Scanner scanner = new Scanner(System.in);
-     private char symbol;
-    private String name;
-    private boolean isWon = false;
+    protected char symbol;
+    protected String name;
+    protected boolean isWon = false;
 
 
     public Player(char symbol){this.symbol = symbol;}
