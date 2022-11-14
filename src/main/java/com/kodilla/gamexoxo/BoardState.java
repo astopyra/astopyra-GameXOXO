@@ -3,7 +3,7 @@ package com.kodilla.gamexoxo;
 
 
 public class BoardState {
-    public char [][] board = new char[3][3];
+     public char [][] board = new char[3][3];
 
     public BoardState(){
         for(int i=0; i< board.length; i++){
@@ -13,12 +13,12 @@ public class BoardState {
         }
     }
 
-    public void setBoard(UserCommands userCommands, GameState gameState) throws FieldAlreadyTakenException {
-        if(board[userCommands.getRowNumber()][userCommands.getColumnNumber()] != ' '){
+    public void setBoard(NextMove nextMove, Player player) throws FieldAlreadyTakenException {
+        if(board[nextMove.getRowNumber()][nextMove.getColumnNumber()] != ' '){
             throw new FieldAlreadyTakenException("To pole jest juz zajete, wybierz wolne pole");
         }
 
-        board[userCommands.getRowNumber()][userCommands.getColumnNumber()] = gameState.sign;
+        board[nextMove.getRowNumber()][nextMove.getColumnNumber()] = player.getSymbol();
 
     }
 
