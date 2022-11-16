@@ -15,58 +15,57 @@ public class GameXoxoApplication {
         player1.setName();
 
         boolean player1Turn = true;
-        boolean draw = false;
-    do {
 
-        if (player1Turn) {
-            boolean done = false;
-            do {
-                try {
-                    nextMove.loadNextMove(player1);
-                    boardState.setBoard(nextMove, player1);
-                    done = true;
-                } catch (FieldAlreadyTakenException f) {
-                    System.out.println("Wybierz puste pole");
-                }
-            } while (!done);
+        do {
 
-            GameBoard.printBoard(boardState.board);
+            if (player1Turn) {
+                boolean done = false;
+                do {
+                    try {
+                        nextMove.loadNextMove(player1);
+                        boardState.setBoard(nextMove, player1);
+                        done = true;
+                    } catch (FieldAlreadyTakenException f) {
+                        System.out.println("Wybierz puste pole");
+                    }
+                } while (!done);
 
-            resultVerification.checkRows(boardState, player1);
-            resultVerification.checkColumns(boardState, player1);
-            resultVerification.checkAcross(boardState, player1);
-            resultVerification.gameResult(player1);
-            draw = resultVerification.checkIsDraw(boardState);
+                GameBoard.printBoard(boardState.board);
 
-            player1Turn = !player1Turn;
+                resultVerification.checkIsDraw(boardState);
+                resultVerification.checkRows(boardState, player1);
+                resultVerification.checkColumns(boardState, player1);
+                resultVerification.checkAcross(boardState, player1);
+                resultVerification.gameResult(player1);
 
-        } else{
-            boolean done = false;
-            do {
-                try {
-                    //nextMove.loadNextMove(player2);
-                    computerMove.loadNextMove();
-                    boardState.setBoard(computerMove, player2);
-                    done = true;
-                } catch (FieldAlreadyTakenException f) {
-                    //System.out.println("Wybierz puste pole");
-                }
-            } while (!done);
+                player1Turn = !player1Turn;
 
-            GameBoard.printBoard(boardState.board);
+            } else{
+                boolean done = false;
+                do {
+                    try {
+                        //nextMove.loadNextMove(player2);
+                        computerMove.loadNextMove();
+                        boardState.setBoard(computerMove, player2);
+                        done = true;
+                    } catch (FieldAlreadyTakenException f) {
+                        //System.out.println("Wybierz puste pole");
+                    }
+                } while (!done);
 
-            resultVerification.checkRows(boardState, player2);
-            resultVerification.checkColumns(boardState, player2);
-            resultVerification.checkAcross(boardState, player2);
-            resultVerification.gameResult(player2);
-            draw = resultVerification.checkIsDraw(boardState);
+                GameBoard.printBoard(boardState.board);
 
-            player1Turn = !player1Turn;
-        }
-
-    } while (!draw && !player1.getIsWon() && !player2.getIsWon());
+                resultVerification.checkIsDraw(boardState);
+                resultVerification.checkRows(boardState, player2);
+                resultVerification.checkColumns(boardState, player2);
+                resultVerification.checkAcross(boardState, player2);
+                resultVerification.gameResult(player2);
 
 
+                player1Turn = !player1Turn;
+            }
+
+        } while (!player1.getIsWon() && !player2.getIsWon());
 
 
     }

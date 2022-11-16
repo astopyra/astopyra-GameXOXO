@@ -22,5 +22,7 @@ public class BoardState {
 
     }
 
-
+    public char[][] getBoard() {
+        return board;
+    }
 }

@@ -7,12 +7,16 @@ public class ResultVerification {
     boolean isThreeInRow = false;
     boolean isThreeInColumn = false;
     boolean isThreeAcross = false;
+    boolean draw = false;
 
 
     public void gameResult(Player player){
         if(isThreeInRow || isThreeInColumn || isThreeAcross) {
             player.setIsWon(true);
             System.out.println("\nGracz " + player.getName() + " WYGRYWA!!");
+        } else if(draw){
+            player.setIsWon(true);
+            System.out.println("\nWynik: REMIS");
         }
     }
 
@@ -55,20 +59,30 @@ public class ResultVerification {
 
     }
 
-    public boolean checkIsDraw(BoardState boardState){
+    public void checkIsDraw(BoardState boardState){
         List<Character> listOfArray = new ArrayList<>();
 
-        for(int i=0; i<boardState.board.length; i++){
-            for(int j=0; j<boardState.board.length; j++){
-                listOfArray.add(boardState.board[i][j]);
+        for(int row=0; row<boardState.board.length; row++){
+            for(int column=0; column<boardState.board.length; column++){
+                listOfArray.add(boardState.board[row][column]);
             }
         }
+        draw = !listOfArray.contains(' ');
+    }
 
-        if(listOfArray.contains(' ')){
-            return false;
-        }else{
-            System.out.println("\nResult: DRAW\nEnd of the game");
-            return true;
-        }
+    public boolean getIsThreeInRow() {
+        return isThreeInRow;
+    }
+
+    public boolean getIsThreeInColumn() {
+        return isThreeInColumn;
+    }
+
+    public boolean getIsThreeAcross() {
+        return isThreeAcross;
+    }
+
+    public boolean getIsDraw() {
+        return draw;
     }
 }
