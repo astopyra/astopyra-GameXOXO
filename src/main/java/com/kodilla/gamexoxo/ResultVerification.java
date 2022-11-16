@@ -1,7 +1,6 @@
 package com.kodilla.gamexoxo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ResultVerification {
 
@@ -54,5 +53,22 @@ public class ResultVerification {
             isThreeAcross = true;
         }
 
+    }
+
+    public boolean checkIsDraw(BoardState boardState){
+        List<Character> listOfArray = new ArrayList<>();
+
+        for(int i=0; i<boardState.board.length; i++){
+            for(int j=0; j<boardState.board.length; j++){
+                listOfArray.add(boardState.board[i][j]);
+            }
+        }
+
+        if(listOfArray.contains(' ')){
+            return false;
+        }else{
+            System.out.println("\nResult: DRAW\nEnd of the game");
+            return true;
+        }
     }
 }

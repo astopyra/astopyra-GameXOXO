@@ -14,9 +14,8 @@ public class GameXoxoApplication {
         System.out.print("Player 1 ");
         player1.setName();
 
-        int counter = 0;
         boolean player1Turn = true;
-
+        boolean draw = false;
     do {
 
         if (player1Turn) {
@@ -37,9 +36,10 @@ public class GameXoxoApplication {
             resultVerification.checkColumns(boardState, player1);
             resultVerification.checkAcross(boardState, player1);
             resultVerification.gameResult(player1);
+            draw = resultVerification.checkIsDraw(boardState);
 
             player1Turn = !player1Turn;
-            counter++;
+
         } else{
             boolean done = false;
             do {
@@ -59,16 +59,13 @@ public class GameXoxoApplication {
             resultVerification.checkColumns(boardState, player2);
             resultVerification.checkAcross(boardState, player2);
             resultVerification.gameResult(player2);
+            draw = resultVerification.checkIsDraw(boardState);
 
             player1Turn = !player1Turn;
-            counter++;
         }
 
-    } while ((counter < 9) && !player1.getIsWon() && !player2.getIsWon());
+    } while (!draw && !player1.getIsWon() && !player2.getIsWon());
 
-        if(counter == 9 && !player1.getIsWon() && !player2.getIsWon()){
-            System.out.println("\nREMIS");
-        }
 
 
 
