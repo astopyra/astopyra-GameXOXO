@@ -4,10 +4,8 @@ import java.util.Scanner;
 
 public class NextMove {
 
-    protected int rowNumber, columnNumber;
+    private int rowNumber, columnNumber;
     Scanner scanner = new Scanner(System.in);
-
-
 
     public void loadNextMove(Player player) throws FieldAlreadyTakenException {
         boolean done = false;
@@ -35,4 +33,11 @@ public class NextMove {
         return columnNumber;
     }
 
+    public void setRowNumber(int rowNumber) {
+        this.rowNumber = rowNumber;
+    }
+
+    public void setColumnNumber(int columnNumber) {
+        this.columnNumber = columnNumber;
+    }
 }

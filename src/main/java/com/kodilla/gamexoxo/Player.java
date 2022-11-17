@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Player {
 
     Scanner scanner = new Scanner(System.in);
-    protected char symbol;
-    protected String name;
-    protected boolean isWon = false;
+    private char symbol;
+    private String name;
+    private boolean isWon = false;
 
 
     public Player(char symbol){this.symbol = symbol;}
@@ -31,5 +31,17 @@ public class Player {
 
     public boolean getIsWon() {
         return isWon;
+    }
+
+    public void setSymbol(char symbol) {
+        this.symbol = symbol;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setWon(boolean won) {
+        isWon = won;
     }
 }

@@ -7,6 +7,7 @@ public class GameXoxoApplication {
         NextMove nextMove = new NextMove();
         ComputerMove computerMove = new ComputerMove();
         ResultVerification resultVerification = new ResultVerification();
+        GameEngine gameEngine = new GameEngine();
 
         Player player1 = new Player('X');
         PlayerComputer player2 = new PlayerComputer('O', "Computer");
@@ -14,57 +15,15 @@ public class GameXoxoApplication {
         System.out.print("Player 1 ");
         player1.setName();
 
-        boolean player1Turn = true;
-
         do {
+            gameEngine.makeMove(nextMove, boardState, player1);
+            resultVerification.gameResult(boardState, player1);
 
-            if (player1Turn) {
-                boolean done = false;
-                do {
-                    try {
-                        nextMove.loadNextMove(player1);
-                        boardState.setBoard(nextMove, player1);
-                        done = true;
-                    } catch (FieldAlreadyTakenException f) {
-                        System.out.println("Wybierz puste pole");
-                    }
-                } while (!done);
+            if(player1.getIsWon())
+                break;                   //??
 
-                GameBoard.printBoard(boardState.board);
-
-                resultVerification.checkIsDraw(boardState);
-                resultVerification.checkRows(boardState, player1);
-                resultVerification.checkColumns(boardState, player1);
-                resultVerification.checkAcross(boardState, player1);
-                resultVerification.gameResult(player1);
-
-                player1Turn = !player1Turn;
-
-            } else{
-                boolean done = false;
-                do {
-                    try {
-                        //nextMove.loadNextMove(player2);
-                        computerMove.loadNextMove();
-                        boardState.setBoard(computerMove, player2);
-                        done = true;
-                    } catch (FieldAlreadyTakenException f) {
-                        //System.out.println("Wybierz puste pole");
-                    }
-                } while (!done);
-
-                GameBoard.printBoard(boardState.board);
-
-                resultVerification.checkIsDraw(boardState);
-                resultVerification.checkRows(boardState, player2);
-                resultVerification.checkColumns(boardState, player2);
-                resultVerification.checkAcross(boardState, player2);
-                resultVerification.gameResult(player2);
-
-
-                player1Turn = !player1Turn;
-            }
-
+            gameEngine.makeComputerMove(computerMove, boardState, player2);
+            resultVerification.gameResult(boardState, player2);
         } while (!player1.getIsWon() && !player2.getIsWon());
 
 

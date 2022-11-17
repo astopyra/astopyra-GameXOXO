@@ -1,5 +1,5 @@
 package com.kodilla.gamexoxo;
-
+c
 import org.junit.jupiter.api.Test;
 import com.kodilla.gamexoxo.ResultVerification;
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +10,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ResultVerificationTestSuite {
-    @Mock
+    /*@Mock
     private BoardState boardStateMock;
     @Test
     void testCheckRowWins(){
@@ -26,7 +26,7 @@ class ResultVerificationTestSuite {
         resultVerification.isThreeInRow( boardStateMock, player);
 
         //then
-        Assertions.assertTrue(resultVerification.getIsThreeInRow());
+        Assertions.assertTrue(resultVerification.getIsThreeInRow()); */
 
     }
 }

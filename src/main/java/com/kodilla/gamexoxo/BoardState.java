@@ -3,7 +3,7 @@ package com.kodilla.gamexoxo;
 
 
 public class BoardState {
-     public char [][] board = new char[3][3];
+     private char [][] board = new char[3][3];
 
     public BoardState(){
         for(int i=0; i< board.length; i++){
