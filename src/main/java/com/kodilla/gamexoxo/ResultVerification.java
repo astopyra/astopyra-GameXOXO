@@ -43,15 +43,25 @@ public class ResultVerification {
     }
 
     private boolean checkAcross(BoardState boardState, Player player){
-
-        if(( boardState.getBoard()[1][1] == player.getSymbol() && boardState.getBoard()[0][0] == boardState.getBoard()[1][1] &&
-                boardState.getBoard()[0][0] == boardState.getBoard()[2][2]) ||
-                (boardState.getBoard()[1][1] == player.getSymbol() && boardState.getBoard()[0][2] == boardState.getBoard()[1][1] &&
-                        boardState.getBoard()[1][1] == boardState.getBoard()[2][0])) {
-            return true;
-        }else {
-            return false;
+        Map<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
+        //checking first diagonal
+        for(int i=0; i<boardState.getBoard().length; i++){
+            if(boardState.getBoard()[i][i] == player.getSymbol()){
+                sum++;
+            }
         }
+        map.put(1, sum);
+        //checking second diagonal
+        sum = 0;
+        for(int i=0; i<boardState.getBoard().length; i++){
+            if(boardState.getBoard()[i][boardState.getBoard().length-i-1] == player.getSymbol()){
+                sum++;
+            }
+        }
+        map.put(2, sum);
+
+        return map.containsValue(3);
     }
 
      private boolean checkIsDraw(BoardState boardState){

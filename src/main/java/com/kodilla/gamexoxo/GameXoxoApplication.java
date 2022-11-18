@@ -2,7 +2,7 @@ package com.kodilla.gamexoxo;
 
 public class GameXoxoApplication {
 
-    public static void main(String[] args) throws FieldAlreadyTakenException {
+    public static void main(String[] args) {
         BoardState boardState = new BoardState();
         NextMove nextMove = new NextMove();
         ComputerMove computerMove = new ComputerMove();
