@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class Player {
 
     Scanner scanner = new Scanner(System.in);
-    private char symbol;
+    //private char symbol;
     private String name;
     private boolean isWon = false;
+    private char symbol = 'X';
 
-
-    public Player(char symbol){this.symbol = symbol;}
+    //public Player(char symbol){this.symbol = symbol;}
 
     public void setIsWon(boolean won) {
         isWon = won;
@@ -33,9 +33,9 @@ public class Player {
         return isWon;
     }
 
-    public void setSymbol(char symbol) {
+    /*public void setSymbol(char symbol) {
         this.symbol = symbol;
-    }
+    }*/
 
     public void setName(String name) {
         this.name = name;

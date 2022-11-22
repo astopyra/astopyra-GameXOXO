@@ -1,8 +1,13 @@
 package com.kodilla.gamexoxo;
 
 public class PlayerComputer extends Player{
-    public PlayerComputer(char symbol, String name){
-        super(symbol);
+    private char symbol = 'O';
+    public PlayerComputer(String name){
         setName(name);
+    }
+
+    @Override
+    public char getSymbol() {
+        return symbol;
     }
 }

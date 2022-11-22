@@ -7,20 +7,20 @@ public class NextMove {
     private int rowNumber, columnNumber;
     Scanner scanner = new Scanner(System.in);
 
-    public void loadNextMove(Player player) throws FieldAlreadyTakenException {
+    public void loadNextMove(GameVersion version) throws FieldAlreadyTakenException {
         boolean done = false;
         do {
             try {
-                System.out.print(player.getName() + " podaj nr wiersza (0, 1 lub 2): ");
+                System.out.print("Podaj nr wiersza (0-" + (version.getBoardSize()-1) + "): ");
                 rowNumber = Integer.parseInt(scanner.nextLine());
-                System.out.print(player.getName() + " podaj nr kolumny (0, 1 lub 2): ");
+                System.out.print("Podaj nr kolumny (0-" + (version.getBoardSize()-1) + "): ");
                 columnNumber = Integer.parseInt(scanner.nextLine());
                 done = true;
             } catch (NumberFormatException e) {
-                System.out.println("Podaj cyfre 0, 1 lub 2");
+                System.out.println("Podaj cyfre 0-" + version.getBoardSize());
             }
 
-        } while(!done || rowNumber>2 || rowNumber<0);
+        } while(!done || rowNumber> version.getBoardSize()-1 || rowNumber<0);
     }
 
 
