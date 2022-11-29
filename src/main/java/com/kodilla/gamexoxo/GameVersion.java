@@ -8,15 +8,19 @@ public class GameVersion {
     private int gameVersion = 0;
 
 
-    public void setBoardSize(){
-        boardSize = gameVersion == 1 ? 3 : 10;
+    public GameVersion(Player player){
+        setGameVersion(player);
+        setBoardSize();
+        setSymbolsToWin();
     }
 
-    public void setSymbolsToWin(){
+    private void setBoardSize(){ boardSize = gameVersion == 1 ? 3 : 10; }
+
+    private void setSymbolsToWin(){
         symbolsToWin = gameVersion == 1 ? 3 : 5;
     }
 
-    public void setGameVersion(Player player){
+    private void setGameVersion(Player player){
         boolean done = false;
         Scanner scanner = new Scanner(System.in);
 
